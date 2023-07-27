@@ -60,11 +60,24 @@ const AddFunctionsScreen = () => {
         loadDestinationDataFromStorage();
     }, []);
 
-    const handleDeleteItem = (itemId) => {
-        setDestinationData((prevData) =>
+    const handleDeleteItem = async (itemId) => {
+        try {
+          // Remove the item from destinationData state
+          setDestinationData((prevData) =>
             prevData.filter((item) => item.uniqueId !== itemId)
-        );
-    };
+          );
+      
+          // Update the AsyncStorage with the updated data
+          await AsyncStorage.setItem(
+            'destinationData',
+            JSON.stringify(destinationData.filter((item) => item.uniqueId !== itemId))
+          );
+          console.log('destinationData removed from AsyncStorage.');
+        } catch (error) {
+          console.error('Error deleting destinationData from AsyncStorage:', error);
+        }
+      };
+      
     const generateUniqueID = () => {
         return '_' + Math.random().toString(36).substr(2, 9);
     };
