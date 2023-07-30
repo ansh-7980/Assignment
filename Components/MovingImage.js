@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Animated, PanResponder } from 'react-native';
 
-export const MovingImage = ({ data, xPos, yPos, sayHello }) => {
+export const MovingImage = ({ data, xPos, yPos, sayHello,imageSource, }) => {
     // console.log(typeof data);
     
     const position = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
@@ -28,7 +28,7 @@ export const MovingImage = ({ data, xPos, yPos, sayHello }) => {
         // When the xPos and yPos props change, update the animated position accordingly
         position.setValue({ x: xPos, y: yPos });
         
-      }, [xPos, yPos,sayHello]);
+      }, [xPos, yPos,sayHello,imageSource]);
     return (
         <Animated.View
         style={[
@@ -40,7 +40,7 @@ export const MovingImage = ({ data, xPos, yPos, sayHello }) => {
         {...panResponder.panHandlers}
       >
         <Animated.Image
-          source={require('./../assets/cartoon.png')}
+          source={imageSource}
           style={styles.image}
         />
           {sayHello && <Text style={{marginLeft:-30, marginTop:10,}}>Hello!!!</Text>}

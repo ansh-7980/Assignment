@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/HomeScreen';
 import AddFunctionsScreen from './src/AddFunctionsScreen';
-import SpritAdd from './src/SpritAdd';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -17,7 +16,6 @@ export default function App() {
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="AddFunction" component={AddFunctionsScreen} />
-        <Stack.Screen name="SpritAdd" component={SpritAdd} />
 
 
       </Stack.Navigator>

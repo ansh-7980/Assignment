@@ -24,7 +24,7 @@ export const CardComponent = (props) => {
   )
 }
 
-export const CardComponentBlank = (props) => {
+export const CardComponentBlankformoving = (props) => {
   const { onPress, width = "100%", height = "100%",title="Add Actions",bg="blue" ,marginTop="5%"} = props;
   return (
     <Card containerStyle={{width:"40%",justifyContent:"center"}}>
